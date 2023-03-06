@@ -1,0 +1,25 @@
+---
+- name: Just a little proof everything is rdy to go
+  hosts: rack
+
+  vars:
+    cat_variable: "{{ lookup('file','/etc/resolv.conf') }}"
+    cat_list: "{{ cat_variable | split('\n') }}"
+    dns_server: "{{ cat_list [0] }}"
+    serverresult: "{{ ansible_hostname }};{{ dns_server }}"
+  
+  tasks:
+  - name: write to local file
+    lineinfile:
+      line: "{{ serverresult }}"
+      insertafter: EOF
+      dest: "info.txt"
+    delegate_to: localhost
+    throttle: 1
+
+
+
+
+
+
+
