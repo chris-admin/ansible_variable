@@ -12,7 +12,6 @@
   - name: write to local file
     lineinfile:
       line: "{{ serverresult }}"
-      insertafter: EOF
       dest: "info.txt"
     delegate_to: localhost
     throttle: 1
