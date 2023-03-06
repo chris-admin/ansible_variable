@@ -1,5 +1,5 @@
 ---
-- name: Just a little proof everything is rdy to go
+- name: read from a file, working with variables and write to local one
   hosts: rack
 
   vars:
